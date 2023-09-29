@@ -1,0 +1,159 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+  font-weight: normal;
+}
+
+html {
+  background-color: black;
+}
+
+body {
+  margin: 5px;
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.addOpacity {
+  opacity: 0.1;
+}
+
+.removeOpacity {
+  opacity: 1;
+}
+
+#root {
+  border: solid white 6px;
+  border-radius: 20px;
+  padding: 50px;
+  margin-top: 30px;
+}
+
+form {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  width: 400px;
+  color: white;
+}
+
+input {
+  font-weight: 600;
+  font-family: 'Bacasime Antique', sans-serif;
+  font-size: 20px;
+  width: 100%;
+  height: 35px;
+  border-radius: 8px;
+}
+
+button {
+  transition: transform 0.3s ease-in-out;
+  transform: scale(1);
+  font-family: 'Bacasime Antique', sans-serif;
+  width: 120px;
+  height: 40px;
+  border-radius: 15px;
+  font-size: 14px;
+}
+
+.button-box {
+  display: flex;
+  gap: 35%;
+  margin-top: 20px;
+}
+
+button:hover {
+  transform: scale(1.2);
+}
+
+.passwordBox {
+  display: flex;
+  width: 100%;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.passwordBox p {
+  width: 800px;
+  margin-left: 25%;
+  font-size: 18px;
+}
+
+.passwordBox input {
+  height: 25px;
+  margin-right: 25%;
+}
+
+.users {
+  font-family: 'Courier New', Courier, monospace;
+  background-color: lightgray;
+  border-radius: 20px;
+  margin-top: 100px;
+  margin-left: -20px;
+  padding-right: 10px;
+  font-size: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.users > ul {
+  margin-top: -30px;
+}
+
+.users > ul > li {
+  list-style: none;
+}
+
+.animation-div {
+  width: 55px;
+  height: 55px;
+  margin: 8px;
+  border-radius: 50%;
+  margin-left: 40%;
+  border: 6px solid #fff;
+  border-color: #fff transparent #fff transparent;
+  animation: loading-rotation 1.2s linear infinite;
+}
+
+.visible {
+  display: block;
+}
+
+.hidden {
+  display: none;
+}
+
+@keyframes loading-rotation {
+  100%{
+    rotate: 360deg;
+  }
+}
+
+@media only screen and (max-width: 540px) {
+ form {
+  width: 300px;
+ }
+
+ .button-box {
+  gap: 15%;
+}
+
+ #root {
+  border: none;
+}
+
+.users {
+  margin-left: 0px;
+  padding-right: 20px;
+  font-size: 14px;
+}
+
+}
