@@ -10,20 +10,18 @@ const registeredUsers = [
 ];
 
 export default function App() {
-
-  const [passwordVisibility, setPasswordVisibility] = useState(false);
+  
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [passwordVisibility, setPasswordVisibility] = useState(false);
   const [loginAttempt, setLoginAttempt] = useState(false);
-  const [loginAnimation, setLoginAnimation] = useState(false);
   const [successfullLogin, setSuccesfullLogin] = useState(false);
 
   function resetForm() {
-    setPasswordVisibility(false);
     setUsername("");
     setPassword("");
+    setPasswordVisibility(false);
     setLoginAttempt(false);
-    setLoginAnimation(false);
   }
 
   function togglePasswordVisibility() {
@@ -33,7 +31,6 @@ export default function App() {
   function handleLogin(e) {
     e.preventDefault();
     setLoginAttempt(true);
-    setLoginAnimation(true);
     if (username === "" || password === "") {
       alert("Please fill out both fields.");
       resetForm();
@@ -60,7 +57,6 @@ export default function App() {
     };
 
     setLoginAttempt(true);
-    setLoginAnimation(true);
 
     if (username === "" || password === "") {
       alert("Please fill out both fields.");
@@ -90,7 +86,7 @@ export default function App() {
 
   return (
     <>
-    <DefaultPage ourUsername={username} handleOurUsername={handleUsername} ourPasswordInput={password} ourPasswordVisibility={passwordVisibility} toggleOurPasswordVisibility={togglePasswordVisibility} handleOurLogin={handleLogin} ourLoginAttempt={loginAttempt} ourLoginAnimation={loginAnimation} ourRegisteredUsers={registeredUsers} handleOurPassword={handlePassword} isOurLoginSuccessfull={successfullLogin} />
+    <DefaultPage ourUsername={username} handleOurUsername={handleUsername} ourPasswordInput={password} ourPasswordVisibility={passwordVisibility} toggleOurPasswordVisibility={togglePasswordVisibility} handleOurLogin={handleLogin} ourLoginAttempt={loginAttempt}  ourRegisteredUsers={registeredUsers} handleOurPassword={handlePassword} isOurLoginSuccessfull={successfullLogin} />
     </>
   );
 }

@@ -2,7 +2,7 @@ import { useState } from 'react';
 import Signup from './Sign-up-page';
 import LoggedIn from './Succesfull-login-page';
 
-export default function DefaultPage({ourUsername, handleOurUsername, ourPasswordInput, ourPasswordVisibility, toggleOurPasswordVisibility, handleOurLogin, ourLoginAttempt, ourLoginAnimation, ourRegisteredUsers, handleOurPassword, isOurLoginSuccessfull }) {
+export default function DefaultPage({ourUsername, handleOurUsername, ourPasswordInput, ourPasswordVisibility, toggleOurPasswordVisibility, handleOurLogin, ourLoginAttempt, ourRegisteredUsers, handleOurPassword, isOurLoginSuccessfull }) {
 
   const[showSignupPage, setShowSignupPage] = useState(false);
 
@@ -42,7 +42,7 @@ export default function DefaultPage({ourUsername, handleOurUsername, ourPassword
           ) : (
             <div>
               <div className="form">
-        <form id="contact-form" className={`${ourLoginAnimation ? "addOpacity" : "removeOpacity"}`}>
+        <form id="contact-form" className={`${ourLoginAttempt? "addOpacity" : "removeOpacity"}`}>
           <h2 id="contact-title">Welcome to our site.</h2>
           <input
             type="text"
@@ -75,11 +75,11 @@ export default function DefaultPage({ourUsername, handleOurUsername, ourPassword
         </div>
 
         <div
-          className={`animation-div ${ourLoginAnimation ? "visible" : "hidden"}`}
+          className={`animation-div ${ourLoginAttempt ? "visible" : "hidden"}`}
         ></div>
       </div>
 
-      <div className={`users ${ourLoginAnimation ? "addOpacity" : "removeOpacity"}`}>
+      <div className={`users ${ourLoginAttempt ? "addOpacity" : "removeOpacity"}`}>
         <p>Hacked list of available users...</p>
         <ul>
           {ourRegisteredUsers.map((user) => (
@@ -94,4 +94,3 @@ export default function DefaultPage({ourUsername, handleOurUsername, ourPassword
         </>
       );
     }
-
