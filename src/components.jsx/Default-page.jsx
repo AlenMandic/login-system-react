@@ -9,8 +9,7 @@ export default function DefaultPage({ourUsername, handleOurUsername, ourPassword
   function handleOurNotRegistered() {
     setShowSignupPage(!showSignupPage)
   }
-  //{`animation-div ${ourLoginAnimation ? "visible" : "hidden"}`}
-
+  
     const passwordInput = ourPasswordVisibility ? (
         <input
           type="text"
@@ -40,7 +39,7 @@ export default function DefaultPage({ourUsername, handleOurUsername, ourPassword
           ) : isOurLoginSuccessfull ? (
             <LoggedIn ourLoggedInUser={ourUsername} />
           ) : (
-            <div>
+            <div className="main-wrapper">
               <div className="form">
         <form id="contact-form" className={`${ourLoginAttempt? "addOpacity" : "removeOpacity"}`}>
           <h2 id="contact-title">Welcome to our site.</h2>

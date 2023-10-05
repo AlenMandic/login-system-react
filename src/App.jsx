@@ -1,6 +1,7 @@
 import "./style.css";
 import { useState } from "react";
 import DefaultPage from "./components.jsx/Default-page";
+import Notification from "./components.jsx/Notifications";
 
 //simulate some database data
 const registeredUsers = [
@@ -8,7 +9,6 @@ const registeredUsers = [
   { username: "john323", password: "bb456", id: 2 },
   { username: "drew_own55", password: "cc789", id: 3 },
 ];
-
 export default function App() {
   
   const [username, setUsername] = useState("");
@@ -16,12 +16,21 @@ export default function App() {
   const [passwordVisibility, setPasswordVisibility] = useState(false);
   const [loginAttempt, setLoginAttempt] = useState(false);
   const [successfullLogin, setSuccesfullLogin] = useState(false);
+  const [showNotification, setShowNotification] = useState(null);
 
   function resetForm() {
     setUsername("");
     setPassword("");
     setPasswordVisibility(false);
     setLoginAttempt(false);
+  }
+
+  function showErrorNotification(message) {
+    setShowNotification(message)
+            resetForm()
+            setTimeout(() => {
+              setShowNotification(null)
+            }, 5000)
   }
 
   function togglePasswordVisibility() {
@@ -32,11 +41,9 @@ export default function App() {
     e.preventDefault();
     setLoginAttempt(true);
     if (username === "" || password === "") {
-      alert("Please fill out both fields.");
-      resetForm();
-      return;
+      showErrorNotification("Please fill out both fields.")
+      return
     }
-
     // simulating a network request using a promise.
     const simulateNetworkRequest = () => {
       return new Promise((resolve, reject) => {
@@ -46,24 +53,19 @@ export default function App() {
           );
 
           if (userId === -1) {
-            reject("Username not found.");
+            showErrorNotification("Username not found.")
+            reject("Username not found.")
           } else if (registeredUsers[userId].password === password) {
             resolve();
           } else {
-            reject("Incorrect password");
+            showErrorNotification("Incorrect password.")
+            reject("Incorrect password.")
           }
-        }, 2500);
+        }, 3000);
       });
     };
 
-    setLoginAttempt(true);
-
-    if (username === "" || password === "") {
-      alert("Please fill out both fields.");
-      resetForm();
-      return;
-    }
-
+    setLoginAttempt(true)
     simulateNetworkRequest()
     // if the Promise resolves, do this.
       .then(() => {
@@ -71,7 +73,7 @@ export default function App() {
       })
       // if the promise doesn't resolve, throw a relevant error.
       .catch((error) => {
-        alert(error);
+        console.log(error)
         resetForm();
       });
   }
@@ -86,6 +88,7 @@ export default function App() {
 
   return (
     <>
+    <Notification message={showNotification} />
     <DefaultPage ourUsername={username} handleOurUsername={handleUsername} ourPasswordInput={password} ourPasswordVisibility={passwordVisibility} toggleOurPasswordVisibility={togglePasswordVisibility} handleOurLogin={handleLogin} ourLoginAttempt={loginAttempt}  ourRegisteredUsers={registeredUsers} handleOurPassword={handlePassword} isOurLoginSuccessfull={successfullLogin} />
     </>
   );

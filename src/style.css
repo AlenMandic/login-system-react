@@ -4,16 +4,83 @@
 }
 
 html {
-  background-color: black;
+  height: 100%;
 }
 
 body {
-  margin: 5px;
-  padding: 5px;
+margin: 0;
+padding: 0;
+font-family: sans-serif;
+background: linear-gradient(#141e30, #243b55);
+}
+
+.main-wrapper {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+.form {
+  background: rgba(0,0,0,.5);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 500px;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 15px 25px rgba(0,0,0,.6);
+  margin-top: 40px;
+}
+
+.form input {
+  width: 100%;
+  padding: 10px 0;
+  font-size: 16px;
+  color: #fff;
+  margin-bottom: 30px;
+  border: none;
+  border-bottom: 1px solid #fff;
+  outline: none;
+  background: transparent;
+}
+
+.passwordBox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 70%;
+}
+
+.passwordBox p {
+  width: 50%;
+}
+
+.passwordBox input {
+  width: 50%;
+  height: 25px;
+  margin-bottom: 0px;
+}
+
+.form button {
+  padding: 5px 10px;
+  font-size: 16px;
+  text-decoration: none;
+  text-transform: uppercase;
+  overflow: hidden;
+  transition: .5s;
+  margin-top: 20px;
+  letter-spacing: 4px;
+}
+
+.button-box {
+  display: flex;
+  gap: 1.8rem;
+}
+
+.form h2 {
+  text-align: center;
 }
 
 .addOpacity {
@@ -24,138 +91,133 @@ body {
   opacity: 1;
 }
 
-#root {
-  border: solid white 6px;
-  border-radius: 20px;
-  padding: 50px;
-  margin-top: 30px;
-}
-
-form {
-  font-family: Georgia, 'Times New Roman', Times, serif;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 1rem;
-  width: 400px;
-  color: white;
-}
-
-input {
-  font-weight: 600;
-  font-family: 'Bacasime Antique', sans-serif;
-  font-size: 20px;
-  width: 100%;
-  height: 35px;
-  border-radius: 8px;
-}
-
-button {
-  transition: transform 0.3s ease-in-out;
-  transform: scale(1);
-  font-family: 'Bacasime Antique', sans-serif;
-  width: 120px;
-  height: 40px;
-  border-radius: 15px;
-  font-size: 14px;
-}
-
-.button-box {
-  display: flex;
-  gap: 35%;
-  margin-top: 20px;
-}
-
 @media (hover: hover) {
   button:hover {
     transform: scale(1.2);
   }
 }
-
-.passwordBox {
-  display: flex;
-  width: 100%;
-  justify-content: flex-start;
-  align-items: center;
-}
-
-.passwordBox p {
-  width: 800px;
-  margin-left: 25%;
-  font-size: 18px;
-}
-
-.passwordBox input {
-  height: 25px;
-  margin-right: 25%;
-}
-
-.users {
-  font-family: 'Courier New', Courier, monospace;
-  background-color: lightgray;
-  border-radius: 20px;
-  margin-top: 100px;
-  margin-left: -20px;
-  padding-right: 10px;
-  font-size: 16px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 1rem;
-}
-
-.users > ul {
-  margin-top: -30px;
-}
-
-.users > ul > li {
-  list-style: none;
-}
-
 .animation-div {
+  position: absolute;
   width: 55px;
   height: 55px;
   margin: 8px;
   border-radius: 50%;
-  margin-left: 40%;
   border: 6px solid #fff;
   border-color: #fff transparent #fff transparent;
   animation: loading-rotation 1.2s linear infinite;
 }
-
 .visible {
   display: block;
 }
-
 .hidden {
   display: none;
 }
-
 @keyframes loading-rotation {
   100%{
     rotate: 360deg;
   }
 }
-
-@media only screen and (max-width: 540px) {
- form {
-  width: 300px;
- }
-
- .button-box {
-  gap: 15%;
-}
-
- #root {
-  border: none;
-}
-
 .users {
-  margin-left: 0px;
-  padding-right: 20px;
-  font-size: 14px;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.users > ul {
+  background-color: white;
+  border-radius: 10px;
+  padding: 5px;
+  margin: 5px;
+  box-shadow: 0 15px 25px rgba(0,0,0,.6);
+}
+.users > ul > li {
+  color: black;
+  list-style: none;
+  margin: 1.2rem;
+}
+.notification-one {
+  background-color: rgb(225, 73, 73);
+  color: white;
+  font-size: 18px;
+  border-style: solid;
+  border-radius: 5px;
+  margin-top: 20px;
+  width: 50%;
+  margin-left: 25%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media screen and (max-width: 530px) {
+.notification-one {
+  width: 100%;
+  margin-left: 0%;
+}
+  .form {
+    width: 380px;
+    padding: 30px;
+    border-radius: 10px;
+    margin-top: 80px;
+  }
+  
+  .form input {
+    width: 100%;
+    padding: 10px 0;
+    font-size: 14px;
+    margin-bottom: 30px;
+  }
+  
+  .passwordBox {
+    width: 70%;
+  }
+  
+  .passwordBox p {
+    width: 70%;
+  }
+  
+  .passwordBox input {
+    width: 40%;
+    height: 20px;
+    margin-bottom: 0px;
+  }
+  
+  .form button {
+    padding: 5px 10px;
+    font-size: 14px;
+    margin-top: 20px;
+    letter-spacing: 3px;
+  }
+  
+  .button-box {
+    display: flex;
+    gap: 1.4rem;
+  }
+
+}
+
+@media screen and (max-width: 408px) {
+
+  .form {
+    width: 300px;
+    padding: 22px;
+    border-radius: 10px;
+    margin-top: 50px;
+  }
+
+  .form button {
+    padding: 5px 10px;
+    font-size: 14px;
+    margin-top: 20px;
+    letter-spacing: 0px;
+  }
+
+}
+
+@media screen and (max-width: 300px) {
+
+.form {
+  width: 250px;
 }
 
 }
