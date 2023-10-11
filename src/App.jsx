@@ -79,11 +79,13 @@ export default function App() {
   }
 
   function handleUsername(e) {
-    setUsername(e.target.value);
+    const trimmedUsername = e.target.value.trim()
+    setUsername(trimmedUsername);
   }
 
   function handlePassword(e) {
-    setPassword(e.target.value);
+    const trimmedPassword = e.target.value.trim()
+    setPassword(trimmedPassword);
   }
 
   return (

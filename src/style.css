@@ -106,16 +106,16 @@ background: linear-gradient(#141e30, #243b55);
   border-color: #fff transparent #fff transparent;
   animation: loading-rotation 1.2s linear infinite;
 }
+@keyframes loading-rotation {
+  100%{
+    rotate: 360deg;
+  }
+}
 .visible {
   display: block;
 }
 .hidden {
   display: none;
-}
-@keyframes loading-rotation {
-  100%{
-    rotate: 360deg;
-  }
 }
 .users {
   margin-top: 20px;
