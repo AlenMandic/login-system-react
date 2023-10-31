@@ -6,4 +6,4 @@
 - Show/hide password inputs
 - Using Promises to simulate relevant network requests and data
 
-# LIVE DEMO: https://plgvxv.csb.app/
+# LIVE DEMO: https://87zksq.csb.app/
