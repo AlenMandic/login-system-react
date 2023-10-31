@@ -1,4 +1,10 @@
-export default function Notification({message}) {
+import React from 'react'
+
+interface NotificationProps {
+    message: string | null
+}
+
+export default function Notification({message}:NotificationProps) {
 
     if (message === null) {
         return null

@@ -2,8 +2,22 @@ import { DemoAccounts } from "./Demo-accounts";
 import { DefaultFormButtons } from "./Default-form-buttons";
 import { DefaultForm } from "./Default-form";
 import { useState } from "react";
+import React from 'react';
 import Signup from "./Sign-up-page";
-import LoggedIn from "./Succesfull-login-page";
+import LoggedIn from "./Successful-login-page";
+
+interface DefaultPageProps {
+    ourUsername: string,
+    handleOurUsername: (parameterOne: React.SyntheticEvent) => void,
+    ourPasswordInput: string,
+    ourPasswordVisibility: boolean,
+    toggleOurPasswordVisibility: () => void,
+    handleOurLogin: (parameterOne: React.SyntheticEvent) => void,
+    ourLoginAttempt: boolean,
+    ourRegisteredUsers: Array<{username: string, password: string, id: number}>,
+    handleOurPassword: (parameterOne: React.SyntheticEvent) => void,
+    isOurLoginSuccessfull: boolean,
+}
 
 export default function DefaultPage({
   ourUsername,
@@ -16,7 +30,7 @@ export default function DefaultPage({
   ourRegisteredUsers,
   handleOurPassword,
   isOurLoginSuccessfull,
-}) {
+}:DefaultPageProps) {
   const [showSignupPage, setShowSignupPage] = useState(false);
 
   function handleOurNotRegistered() {

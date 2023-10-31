@@ -1,7 +1,8 @@
+import React from "react";
 import "./style.css";
 import { useState } from "react";
-import DefaultPage from "./components.jsx/Default-page";
-import Notification from "./components.jsx/Notifications";
+import DefaultPage from "./components/Default-page";
+import Notification from "./components/Notifications";
 
 //simulate some database data
 const registeredUsers = [
@@ -9,6 +10,9 @@ const registeredUsers = [
   { username: "john323", password: "bb456", id: 2 },
   { username: "drew_own55", password: "cc789", id: 3 },
 ];
+
+type notificationState = string | null;
+
 export default function App() {
   
   const [username, setUsername] = useState("");
@@ -16,7 +20,7 @@ export default function App() {
   const [passwordVisibility, setPasswordVisibility] = useState(false);
   const [loginAttempt, setLoginAttempt] = useState(false);
   const [successfullLogin, setSuccesfullLogin] = useState(false);
-  const [showNotification, setShowNotification] = useState(null);
+  const [showNotification, setShowNotification] = useState<notificationState>(null);
 
   function resetForm() {
     setUsername("");
@@ -25,7 +29,7 @@ export default function App() {
     setLoginAttempt(false);
   }
 
-  function showErrorNotification(message) {
+  function showErrorNotification(message:string) {
     setShowNotification(message)
             resetForm()
             setTimeout(() => {
@@ -37,7 +41,7 @@ export default function App() {
     setPasswordVisibility(!passwordVisibility);
   }
 
-  function handleLogin(e) {
+  function handleLogin(e:React.SyntheticEvent) {
     e.preventDefault();
     setLoginAttempt(true);
     if (username === "" || password === "") {
@@ -46,7 +50,7 @@ export default function App() {
     }
     // simulating a network request using a promise.
     const simulateNetworkRequest = () => {
-      return new Promise((resolve, reject) => {
+      return new Promise<void>((resolve, reject) => {
         setTimeout(() => {
           const userId = registeredUsers.findIndex(
             (user) => user.username === username
@@ -78,13 +82,13 @@ export default function App() {
       });
   }
 
-  function handleUsername(e) {
-    const trimmedUsername = e.target.value.trim()
+  function handleUsername(e:React.SyntheticEvent) {
+    const trimmedUsername = (e.target as HTMLInputElement).value.trim()
     setUsername(trimmedUsername);
   }
 
-  function handlePassword(e) {
-    const trimmedPassword = e.target.value.trim()
+  function handlePassword(e:React.SyntheticEvent) {
+    const trimmedPassword = (e.target as HTMLInputElement).value.trim()
     setPassword(trimmedPassword);
   }
 
